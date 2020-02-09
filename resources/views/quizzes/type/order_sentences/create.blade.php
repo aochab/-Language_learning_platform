@@ -2,23 +2,16 @@
 
 @section ('quizType')
     <div class="container">
-        <form method="POST" action="{{ route('translateWords.store') }}">
-            {{ csrf_field() }}
+        <form method="POST" action="/orderSentences">
+            @csrf
             <div id="field">
-                <label>Foreign</label>
-                <input type="text" name="foreign" value="{{ old("foreign") }}">
+                <label>Sentence to order</label>
+                <input type="text" name="sentence">
                 @error('sentence')
                 <p class="help is-danger">{{$message}}</p>
                 @enderror
             </div>
             <div id="field2">
-                <label>Native</label>
-                <input type="text" name="native" value="{{ old("native") }}">
-                @error('native')
-                <p class="help is-danger">{{$message}}</p>
-                @enderror
-            </div>
-            <div id="field3">
                 <label>Language</label>
                 <select name="language">
                     @foreach($languages as $language)
